@@ -17,7 +17,11 @@ export default function Home() {
 
   const { data, isLoading: loadingQuery } = useQuery({
     queryKey: ["posts"],
-    queryFn: () => supabase.from("anon_post").select(),
+    queryFn: () =>
+      supabase
+        .from("anon_post")
+        .select()
+        .order("created_at", { ascending: false }),
   });
 
   const { mutate, isLoading: loadingMutation } = useMutation({
@@ -55,15 +59,16 @@ export default function Home() {
 
   return (
     <div className="bg-base-300">
-      <div className="flex flex-col items-center w-full h-screen ">
+      <div className="flex flex-col items-center w-screen h-screen pb-28 no-scrollbar overflow-auto">
         <header className="prose lg:prose-s mt-4 text-center">
-          <h1>Send message from CFB to CFB</h1>
-          <h1 className="m-0 p-0 leading-4">Anonymously!</h1>
+          <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+            Send message from CFB to CFB <br /> Anonymously!
+          </h1>
         </header>
 
-        <main className="pb-28 grid no-scrollbar overflow-auto">
+        <main className="px-4">
           {loadingQuery ? (
-            <div className="h-screen pb-72 grid justify-center items-center">
+            <div className="h-screen pb-72 grid justify-center items-center ">
               <progress className="progress w-56 bg-primary" />
             </div>
           ) : (
@@ -71,7 +76,7 @@ export default function Home() {
               {posts?.map((post) => (
                 <article
                   key={post.id}
-                  className="card w-96 bg-primary text-primary-content h-fit mt-10"
+                  className="card w-full bg-primary text-primary-content h-fit mt-10"
                 >
                   <div className="card-body">
                     <p>{post.description}</p>
@@ -93,7 +98,7 @@ export default function Home() {
 
         <form
           onSubmit={handleSubmit}
-          className="grid grid-flow-col grid-cols-4 items-center gap-4 w-screen shadow-2xl p-4 fixed bottom-0 bg-neutral h-24"
+          className="grid grid-flow-col grid-cols-4 items-center gap-4 w-screen shadow-2xl fixed bottom-0 bg-neutral h-24"
         >
           <textarea
             ref={newPost}
