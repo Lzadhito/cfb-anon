@@ -17,7 +17,7 @@ export default function Toast ({message, error}: ToastMessage) {
     <div className={message || error ? "toast toast-top toast-end" : "d-none"}>
       <div className={`${messageType()}`}>
         <div>
-          <span>{message ? message : error}</span>
+          <span className="text-white">{message ? message : error}</span>
         </div>
       </div>
     </div>

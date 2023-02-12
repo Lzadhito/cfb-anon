@@ -51,9 +51,7 @@ export default function MainMenu() {
   }
 
   const handlePressEnter = async (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
+    if (e.keyCode == 13 && !e.shiftKey) {
       onSubmit();
     }
   }
