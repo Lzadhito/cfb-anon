@@ -10,7 +10,7 @@ export interface Data {
     id: string;
     description: string;
     created_at: string;
-    createdAt: string;
+    key: number;
 }
 
 export interface PostData {

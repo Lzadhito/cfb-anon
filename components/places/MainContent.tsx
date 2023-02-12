@@ -10,8 +10,13 @@ export default function MainContent (postData: PostData) {
         </div>
       ) : (
         <>
-          {postData?.data.map((post: Data, key: number) => (
-            <PostDetail id={post.id} createdAt={post.created_at} description={post.description} data={post} key={key} />
+          {postData?.data.map(({id, created_at, description, key}: Data) => (
+            <PostDetail 
+              id={id} 
+              created_at={created_at} 
+              description={description} 
+              key={key}
+            />
           ))}
         </>
       )}

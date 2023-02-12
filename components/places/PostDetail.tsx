@@ -3,7 +3,7 @@ import Image from "next/image";
 import AnonymousImage from "styles/images/anonymous.jpg";
 import countHistoryTime from "utilities/formatter";
 
-export default function PostDetail ({id, createdAt: created_at, description}: Data) {
+export default function PostDetail ({id, created_at, description}: Data) {
   return (
     <article
       key={id}
