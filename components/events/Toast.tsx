@@ -2,13 +2,17 @@ import { ToastMessage } from "common/types";
 
 export default function Toast (toastMessage: ToastMessage) {
   const messageType = () => {
-    if(toastMessage.message) {
+    if (toastMessage.message) {
       return 'success';
     }
-    if(toastMessage.error) {
+    if (toastMessage.error) {
       return 'error';
     }
   };
+
+  if (!toastMessage.message || !toastMessage.error) {
+    return null;
+  }
 
   return (
     <div className="toast toast-top toast-end">
@@ -18,5 +22,5 @@ export default function Toast (toastMessage: ToastMessage) {
         </div>
       </div>
     </div>
-  )
+  );
 }
