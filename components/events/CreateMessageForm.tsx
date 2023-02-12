@@ -8,16 +8,21 @@ export default function CreateMessageForm (submitForm: SubmitForm) {
     >
       <textarea
         ref={submitForm.inputTextRef}
+        style={{
+          resize: 'none'
+        }}
         placeholder="Post something ..."
-        className="textarea textarea-bordered col-span-4 bg-slate-200 text-black"
+        className="textarea textarea-bordered col-span-4 bg-slate-200 text-black ml-3"
       />
-      <button
-        disabled={submitForm.loadingMutation}
-        type="submit"
-        className="material-symbols-rounded"
-      >
-            send
-      </button>
+      <div className="card-body pr-3 pl-0">
+        <button
+          disabled={submitForm.loadingMutation}
+          type="submit"
+          className="btn btn-secondary btn-sm material-symbols-rounded"
+        >
+        send
+        </button>
+      </div>
     </form>
   )
 }
