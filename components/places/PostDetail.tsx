@@ -27,10 +27,10 @@ export default function PostDetail ({id, createdAt: created_at, description}: Da
       </div>
       <div className="p-5 pt-0">
         <button className="btn btn-accent btn-sm">
-                  Reply
+            Reply
         </button>
         <button className="btn btn-secondary btn-sm ml-3">
-                  &hearts;
+            &hearts;
         </button>
       </div>
     </article>
