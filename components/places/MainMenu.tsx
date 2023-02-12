@@ -31,11 +31,7 @@ export default function MainMenu() {
     },
   });
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!inputTextRef?.current?.value) return;
-
+  const onSubmit = async () => {
     try {
       await mutate({ description: inputTextRef.current.value });
       setToastMessage("Post successfully created!");
@@ -52,6 +48,22 @@ export default function MainMenu() {
         setToastMessage("");
       }, 3000);
     }
+  }
+
+  const handlePressEnter = async (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      onSubmit();
+    }
+  }
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!inputTextRef?.current?.value) return;
+
+    onSubmit();
   };
 		
   return (
@@ -63,7 +75,8 @@ export default function MainMenu() {
       />
       <CreateMessageForm 
         inputTextRef={inputTextRef} 
-        handleSubmit={handleSubmit} 
+        handlePressEnter={handlePressEnter}
+        handleSubmit={handleSubmit}
         loadingMutation={loadingMutation}
       />
       <Toast 

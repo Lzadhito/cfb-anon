@@ -11,6 +11,7 @@ export default function CreateMessageForm (submitForm: SubmitForm) {
         style={{
           resize: 'none'
         }}
+        onKeyDown={submitForm.handlePressEnter}
         placeholder="Post something ..."
         className="textarea textarea-bordered col-span-4 bg-slate-200 text-black ml-3"
       />

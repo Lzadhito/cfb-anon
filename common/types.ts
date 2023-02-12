@@ -25,6 +25,7 @@ export interface ToastMessage {
 
 export interface SubmitForm {
     inputTextRef: React.Ref<HTMLInputElement | HTMLElement | string | any>;
+    handlePressEnter?: any;
     handleSubmit?: any;
     loadingMutation: boolean;
 }
