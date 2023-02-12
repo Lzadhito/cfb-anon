@@ -10,6 +10,7 @@ export interface Data {
     id: string;
     description: string;
     created_at: string;
+    createdAt: string;
 }
 
 export interface PostData {
@@ -26,4 +27,9 @@ export interface SubmitForm {
     inputTextRef: React.Ref<HTMLInputElement | HTMLElement | string | any>;
     handleSubmit?: any;
     loadingMutation: boolean;
+}
+
+export interface CommentLikes {
+    id: string | number;
+    text: string | number
 }

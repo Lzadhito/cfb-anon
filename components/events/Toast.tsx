@@ -1,24 +1,23 @@
+/* eslint-disable no-extra-boolean-cast */
+// Need to disable extra boolean because it needed to affect the conditional 
 import { ToastMessage } from "common/types";
 
-export default function Toast (toastMessage: ToastMessage) {
+export default function Toast ({message, error}: ToastMessage) {
   const messageType = () => {
-    if (toastMessage.message) {
-      return 'success';
+    if (!!message) {
+      return "alert alert-success";
     }
-    if (toastMessage.error) {
-      return 'error';
+    if (!!error) {
+      return "alert alert-error";
     }
+    return "d-none"
   };
 
-  if (!toastMessage.message || !toastMessage.error) {
-    return null;
-  }
-
   return (
-    <div className="toast toast-top toast-end">
-      <div className={`alert alert-${messageType}`}>
+    <div className={message || error ? "toast toast-top toast-end" : "d-none"}>
+      <div className={`${messageType()}`}>
         <div>
-          <span>{toastMessage.message ? toastMessage.message : toastMessage.error}</span>
+          <span>{message ? message : error}</span>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function MainMenu() {
   const [toastErrorMessage, setToastErrorMessage] = useState("");
   const queryClient = useQueryClient();
 
-  const { data, isLoading: loadingQuery } = useQuery({
+  const { data: chatData, isLoading: loadingQuery } = useQuery({
     queryKey: ["posts"],
     queryFn: () =>
       supabase
@@ -37,7 +37,7 @@ export default function MainMenu() {
     if (!inputTextRef?.current?.value) return;
 
     try {
-      mutate({ description: inputTextRef.current.value });
+      await mutate({ description: inputTextRef.current.value });
       setToastMessage("Post successfully created!");
       inputTextRef.current.value = "";
     } catch (error: unknown) {
@@ -59,7 +59,7 @@ export default function MainMenu() {
       <Header />
       <MainContent 
         loading={loadingQuery} 
-        data={data?.data}
+        data={chatData?.data}
       />
       <CreateMessageForm 
         inputTextRef={inputTextRef} 
