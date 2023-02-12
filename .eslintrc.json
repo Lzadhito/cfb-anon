@@ -3,7 +3,8 @@
   "rules": {
     "indent": ["error", 2],
     "keyword-spacing": ["error"],
-    "no-else-return": ["error"]
+    "no-else-return": ["error"],
+    "eol-last": ["error", "always"]
   },
   "globals": {
     "JSX": "readonly",
