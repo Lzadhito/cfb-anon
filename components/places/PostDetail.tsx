@@ -17,7 +17,7 @@ export default function PostDetail ({id, created_at, description}: Data) {
             </div>
           </div>
           <div className="chat-header">
-                  Anonymous CFB Mania
+                Anonymous CFB Mania
             <time className="text-xs opacity-50 ml-2">
               {countHistoryTime(new Date(created_at))}
             </time>
