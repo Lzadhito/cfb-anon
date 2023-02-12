@@ -2,10 +2,10 @@ import { ToastMessage } from "common/types";
 
 export default function Toast (toastMessage: ToastMessage) {
   const messageType = () => {
-    if(!!toastMessage.message) {
+    if(toastMessage.message) {
       return 'success';
     }
-    if(!!toastMessage.error) {
+    if(toastMessage.error) {
       return 'error';
     }
   };
@@ -14,7 +14,7 @@ export default function Toast (toastMessage: ToastMessage) {
     <div className="toast toast-top toast-end">
       <div className={`alert alert-${messageType}`}>
         <div>
-          <span>{!!toastMessage.message ? toastMessage.message : toastMessage.error}</span>
+          <span>{toastMessage.message ? toastMessage.message : toastMessage.error}</span>
         </div>
       </div>
     </div>

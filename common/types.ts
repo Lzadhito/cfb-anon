@@ -3,7 +3,7 @@ export const title = "Send message from CFB to CFB <br /> Anonymously!";
 // Thsi props type is for static props
 export interface StaticProps {
     children: JSX.Element | JSX.Element[];
-};
+}
 
 // These props type are data from SSR
 export interface Data {
